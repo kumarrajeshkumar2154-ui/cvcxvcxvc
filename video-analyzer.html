@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Video Analyzer | TubeBoost Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        .analyzer-section { padding: 120px 0; }
+        .analyzer-container { max-width: 800px; margin: 0 auto; text-align: center; }
+        .result-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            margin-top: 30px;
+            text-align: left;
+            animation: fadeIn 0.5s ease;
+        }
+        .result-card h3 { color: var(--primary-red); margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 10px; }
+        .result-card p { white-space: pre-wrap; word-wrap: break-word; color: var(--text-gray); font-size: 0.9rem; max-height: 150px; overflow-y: auto; background: #111; padding: 10px; border-radius: 5px; }
+        .result-card .tags-container { display: flex; flex-wrap: wrap; gap: 8px; }
+        .result-card .tag { background: var(--primary-red); color: white; padding: 4px 10px; border-radius: 5px; font-size: 0.8rem; }
+        .seo-tips { margin-top: 20px; }
+        .seo-tips ul { list-style: none; padding: 0; }
+        .seo-tips li { background: #111; padding: 10px; border-radius: 5px; margin-bottom: 8px; font-size: 0.9rem; }
+        .seo-tips li i { color: #00ff00; margin-right: 10px; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">TubeBoost <span>Pro</span></a>
+            <a href="index.html" class="btn" style="padding: 8px 20px;">Back Home</a>
+        </div>
+    </nav>
+
+    <section class="analyzer-section">
+        <div class="analyzer-container container">
+            <h2 class="section-title">YouTube Video Analyzer</h2>
+            <p class="inspector-desc">Enter a YouTube video link to get SEO suggestions for Title, Description, and Tags.</p>
+            
+            <div class="inspector-input-group">
+                <input type="url" id="videoLinkInput" placeholder="Enter YouTube Video URL..." style="width: 100%;">
+                <button id="analyzeBtn" class="btn">Analyze</button>
+            </div>
+
+            <div id="inspectorLoading" class="loading-spinner" style="display: none; text-align: center; margin-top: 20px;">
+                <i class="fas fa-circle-notch fa-spin"></i>
+            </div>
+            <div id="inspectorError" class="error-msg" style="text-align: center; margin-top: 10px;"></div>
+
+            <div id="analysisResult" style="display: none;">
+                <!-- Results will be injected here -->
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const API_KEY = 'AIzaSyAHBlvpQvblXt6U_Uh2u5wlG4DxESVRnzw'; // This key is from your script.js
+            const analyzeBtn = document.getElementById('analyzeBtn');
+            const videoLinkInput = document.getElementById('videoLinkInput');
+            const loader = document.getElementById('inspectorLoading');
+            const errorDisplay = document.getElementById('inspectorError');
+            const resultContainer = document.getElementById('analysisResult');
+
+            analyzeBtn.addEventListener('click', () => {
+                const url = videoLinkInput.value.trim();
+                if (!url) {
+                    errorDisplay.innerText = "Please enter a video URL.";
+                    return;
+                }
+
+                const videoId = extractVideoId(url);
+                if (!videoId) {
+                    errorDisplay.innerText = "Invalid YouTube video URL.";
+                    return;
+                }
+
+                fetchVideoDetails(videoId);
+            });
+
+            function extractVideoId(url) {
+                const regex = /(?:youtube\.com\/(?:[^/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/\s]{11})/;
+                const match = url.match(regex);
+                return match ? match[1] : null;
+            }
+
+            async function fetchVideoDetails(videoId) {
+                loader.style.display = 'block';
+                errorDisplay.innerText = '';
+                resultContainer.style.display = 'none';
+
+                const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${videoId}&key=${API_KEY}`;
+
+                try {
+                    const response = await fetch(url);
+                    const data = await response.json();
+
+                    if (data.items && data.items.length > 0) {
+                        displayResults(data.items[0]);
+                    } else {
+                        throw new Error("Video not found or it's private.");
+                    }
+                } catch (err) {
+                    errorDisplay.innerText = err.message;
+                } finally {
+                    loader.style.display = 'none';
+                }
+            }
+
+            function displayResults(video) {
+                const snippet = video.snippet;
+                const tags = snippet.tags || [];
+
+                resultContainer.innerHTML = `
+                    <div class="result-card">
+                        <h3><i class="fas fa-heading"></i> Title Analysis</h3>
+                        <p>${snippet.title}</p>
+                        <div class="seo-tips"><ul><li><i class="fas fa-lightbulb"></i> Your title is ${snippet.title.length} characters. Aim for 60-70 characters for best visibility in search results.</li></ul></div>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-file-alt"></i> Description Analysis</h3>
+                        <p>${snippet.description || 'No description found.'}</p>
+                        <div class="seo-tips"><ul><li><i class="fas fa-lightbulb"></i> Include your main keywords in the first 2-3 sentences. Add links to your social media and related videos.</li></ul></div>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-tags"></i> Tags Found</h3>
+                        <div class="tags-container">${tags.length > 0 ? tags.map(tag => `<span class="tag">${tag}</span>`).join('') : 'No tags found.'}</div>
+                        <div class="seo-tips"><ul><li><i class="fas fa-lightbulb"></i> Use a mix of broad and specific tags. Include your channel name as a tag for branding. Aim for 10-15 relevant tags.</li></ul></div>
+                    </div>
+                `;
+                resultContainer.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

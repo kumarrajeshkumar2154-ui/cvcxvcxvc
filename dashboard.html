@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | TubeBoost Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="dashboard-nav">
+        <div class="container admin-header">
+            <a href="#" class="logo">TubeBoost <span>Admin</span></a>
+            <button id="logoutBtn" class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Logout</button>
+        </div>
+    </nav>
+
+    <section class="dashboard-content">
+        <div class="container">
+            <h2 style="margin-bottom: 30px;">User Orders</h2>
+
+            <div class="stats-container">
+                <div class="stat-card">
+                    <h3>Subscribers Sold Today</h3>
+                    <p id="totalSubsToday">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Revenue</h3>
+                    <p>₹<span id="totalRevenue">0</span></p>
+                </div>
+            </div>
+
+            <div class="admin-controls">
+                <div class="search-container" style="margin-bottom: 0; flex-grow: 1;">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="orderSearch" placeholder="Search by name or email...">
+                </div>
+                <button id="exportCsvBtn" class="btn"><i class="fas fa-file-csv"></i> Export CSV</button>
+            </div>
+
+            <div class="orders-table-container">
+                <table class="orders-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Customer</th>
+                            <th>Plan</th>
+                            <th>YouTube Link</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ordersBody">
+                        <!-- Orders will be injected here -->
+                    </tbody>
+                </table>
+                <div id="noOrders" style="display: none; text-align: center; padding: 40px; color: var(--text-gray);">
+                    No orders found yet.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="admin.js"></script>
+</body>
+</html>

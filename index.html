@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><marquee>TP SUDHANSHU FF</marquee>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TubeBoost Pro | Grow Your YouTube Channel</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">TubeBoost <span>Pro</span></a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <header id="home" class="hero">
+        <div class="container">
+            <div class="hero-content reveal">
+                <h1>Grow Your YouTube Channel with <span>Real Audience</span></h1>
+                <p>Get real views, engagement, and organic subscribers using our data-driven growth strategies.</p>
+                <div class="hero-btns">
+                    <a href="#pricing" class="btn">Get Started</a>
+                    <a href="https://wa.me/919554093633" class="btn btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="card reveal" onclick="selectService('YouTube SEO')">
+                    <i class="fas fa-search-dollar"></i>
+                    <h3>YouTube SEO</h3>
+                    <p>Optimization of Titles, Tags, and Descriptions to rank your videos higher.</p>
+                </div>
+                <div class="card reveal" onclick="selectService('Thumbnail Design')">
+                    <i class="fas fa-paint-brush"></i>
+                    <h3>Thumbnail Design</h3>
+                    <p>High-CTR custom thumbnails that grab attention and increase clicks.</p>
+                </div>
+                <div class="card reveal" onclick="selectService('Video Editing')">
+                    <i class="fas fa-video"></i>
+                    <h3>Video Editing</h3>
+                    <p>Professional storytelling and editing to keep your audience engaged longer.</p>
+                </div>
+                <div class="card reveal" onclick="selectService('Channel Promotion')">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Channel Promotion</h3>
+                    <p>Real audience reach through targeted campaigns and social signals.</p>
+                </div>
+                <a href="thumbnail-editor.html" target="_blank" class="card-link">
+                    <div class="card reveal">
+                        <i class="fas fa-robot"></i>
+                        <h3>AI Thumbnail Generator</h3>
+                        <p>Create stunning, click-worthy thumbnails in seconds using artificial intelligence.</p>
+                    </div>
+                </a>
+                <a href="video-analyzer.html" target="_blank" class="card-link">
+                    <div class="card reveal">
+                        <i class="fas fa-search-plus"></i>
+                        <h3>Video Analyzer</h3>
+                        <p>Get AI-powered suggestions for titles, tags, and descriptions to boost your video's SEO.</p>
+                    </div>
+                </a>
+                <a href="video-portal.html" target="_blank" class="card-link">
+                    <div class="card reveal">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <h3>Video Portal</h3>
+                        <p>Share your videos with the community and download content from other creators.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps-grid">
+                <div class="step reveal">
+                    <div class="step-num">1</div>
+                    <p>Submit your channel link and select a package.</p>
+                </div>
+                <div class="step reveal">
+                    <div class="step-num">2</div>
+                    <p>We optimize your content and start promotion.</p>
+                </div>
+                <div class="step reveal">
+                    <div class="step-num">3</div>
+                    <p>You get real audience growth and engagement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2 class="section-title">Affordable Plans</h2>
+            <div class="pricing-grid">
+                <div class="price-card reveal">
+                    <h3>Basic</h3>
+                    <div class="price">₹10</div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 15 Subscribers</li>
+                        <li><i class="fas fa-check"></i> 50 Likes</li>
+                        <li><i class="fas fa-check"></i> Fast Delivery</li>
+                    </ul>
+                    <a href="#contact" class="btn buy-btn" data-plan="Basic" onclick="selectPlan('Basic')">Buy Now</a>
+                </div>
+                <div class="price-card reveal featured">
+                    <h3>Standard</h3>
+                    <div class="price">₹30</div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 36 Subscribers</li>
+                        <li><i class="fas fa-check"></i> 150 Likes</li>
+                        <li><i class="fas fa-check"></i> Refill Guarantee</li>
+                    </ul>
+                    <a href="#contact" class="btn buy-btn" data-plan="Standard" onclick="selectPlan('Standard')">Buy Now</a>
+                </div>
+                <div class="price-card reveal">
+                    <h3>Premium</h3>
+                    <div class="price">₹100</div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 150 Subscribers</li>
+                        <li><i class="fas fa-check"></i> 500 Likes</li>
+                        <li><i class="fas fa-check"></i> Lifetime Support</li>
+                    </ul>
+                    <a href="#contact" class="btn buy-btn" data-plan="Premium" onclick="selectPlan('Premium')">Buy Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Success Stories</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial reveal">
+                    <p>"My views increased by 400% in just two weeks! The SEO team is amazing."</p>
+                    <h4>- Rahul Sharma</h4>
+                </div>
+                <div class="testimonial reveal">
+                    <p>"Professional thumbnails that actually work. My click-through rate skyrocketed."</p>
+                    <h4>- Anita V.</h4>
+                </div>
+                <div class="testimonial reveal">
+                    <p>"Best investment for my gaming channel. The subscribers are real and active."</p>
+                    <h4>- TechGamer Pro</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Form Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Place Your Order</h2>
+            <form id="orderForm" class="reveal" novalidate>
+                <div class="form-group">
+                    <input type="text" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Email Address" required>
+                </div>
+                <div class="form-group">
+                    <input type="url" id="channelLink" placeholder="YouTube Channel Link" required>
+                </div>
+                <div class="form-group">
+                    <select id="service" required>
+                        <option value="">Select Service</option>
+                        <optgroup label="Standard Plans">
+                            <option value="Basic">Basic Plan (₹10)</option>
+                            <option value="Standard">Standard Plan (₹30)</option>
+                            <option value="Premium">Premium Plan (₹100)</option>
+                        </optgroup>
+                        <optgroup label="Individual Services">
+                            <option value="YouTube SEO">YouTube SEO</option>
+                            <option value="Thumbnail Design">Thumbnail Design</option>
+                            <option value="Video Editing">Video Editing</option>
+                            <option value="Channel Promotion">Channel Promotion</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <button type="submit" class="btn submit-btn">Confirm Order</button>
+            </form>
+            <div id="formFeedback"></div>
+
+            <!-- Results after order -->
+            <div id="inspectorLoading" class="loading-spinner" style="display: none; text-align: center; margin-top: 20px;">
+                <i class="fas fa-circle-notch fa-spin"></i>
+            </div>
+            <div id="inspectorError" class="error-msg" style="text-align: center; margin-top: 10px;"></div>
+            <div id="channelCard" class="channel-card" style="display: none; margin-top: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                <img id="chanImg" src="" alt="Channel Avatar">
+                <div class="chan-info">
+                    <h3 id="chanName">Channel Name</h3>
+                    <p id="chanSubs">0 Subscribers</p>
+                    <p id="chanViews">0 Views</p>
+                    <p id="chanVideos">0 Videos</p>
+                </div>
+            </div>
+
+            <!-- Integrated Payment Details -->
+            <div id="paymentCard" class="payment-card-inline" style="display: none;">
+                <h3 style="margin-bottom: 20px;">Complete Your Payment</h3>
+                <div class="upi-info">
+                    <p><strong>UPI ID:</strong> 9554093633@ybl</p>
+                    <p><strong>Beneficiary:</strong> TubeBoost Pro</p>
+                    <a href="upi://pay?pa=9554093633@ybl&pn=TubeBoostPro&cu=INR" class="btn pay-btn" target="_blank"><i class="fas fa-money-bill-wave"></i> Pay Now with UPI</a>
+                </div>
+                <div class="qr-box">
+                    <img src="path/to/your/real-qr-code.png" alt="QR Code"> <!-- TODO: Replace with your actual QR code image path -->
+                    <p style="font-size: 0.8rem; color: var(--text-gray); margin-top: 5px;">Scan QR Code to Pay</p>
+                </div>
+                <div class="payment-note">
+                    <p style="margin-bottom: 15px;"><i class="fas fa-info-circle"></i> After payment, send the screenshot on WhatsApp to confirm your order.</p>
+                    <a href="https://wa.me/919554093633?text=Payment Screenshot" class="btn btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Send Screenshot</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p>&copy; 2023 TubeBoost Pro. All Rights Reserved.</p>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="admin.html">Admin</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919554093633" class="whatsapp-float" target="_blank" aria-label="Order on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to Top"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
